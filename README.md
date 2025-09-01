@@ -1,36 +1,97 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-## Getting Started
 
-First, run the development server:
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+Tell us what you did as a Web application developer
+Choose prewritten options or write your own.
+Edit as needed, then click Enhance with AI to polish them.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Front end developer
+User Interface Development: Designing and Implementing visually appealing responsive and Intuitive user interfaces using HTML CSS. and JavaScript.
+Performance Optimization and Compatibility: Ensuring optimal performance and cross
+Browser compatlblllty Of web applications by optimizing code, assets and layout.
+Search by job title
+Job title, industry, or keyword
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+Showing 59 results for Web application developer
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
-## Learn More
 
-To learn more about Next.js, take a look at the following resources:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
 
-## Deploy on Vercel
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Front End Developer, MSME
+Ilorin, Nigeria
+
+Oct 2024 - Jan 2025
+
+Developed responsive web applications using HTML, CSS, and JavaScript frameworks.
+Optimized website performance through code review and debugging techniques.
+Wrote clean, maintainable code adhering to industry best practices and standards.
+Supported team members by sharing knowledge of front-end technologies and tools.
+
+
+Front End Developer, MSME
+Ilorin, Nigeria
+
+Apr 2025 - Dec 2025
+
+Integrated APIs to enhance application functionality and streamline data management.
+Assisted in testing web applications across various browsers for compatibility issues.
+Created custom responsive designs that optimized the website layout for various devices.
+Debugged existing code to identify and fix bugs or performance issues.

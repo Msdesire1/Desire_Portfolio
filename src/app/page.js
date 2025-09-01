@@ -282,7 +282,7 @@ export default function Home() {
 
   const education = [
     {
-      degree: 'Bachelor of in Computer Science',
+      degree: 'Bachelor in Computer Science',
       institution: 'Kwara State University, Malete',
       location: 'Kwara, Nigeria',
       period: '2022 - 2024',
@@ -445,7 +445,7 @@ export default function Home() {
         <div className="w-full h-full bg-gradient-to-br from-blue-100 to-green-100 opacity-70" />
             </motion.div>
           </div>
-         <div className="relative z-10 container mx-auto px-6 text-center pt-10">
+         <div className="relative z-10 container mx-auto px-6 text-center pt-32">
             <motion.div
               variants={containerVariants}
               initial="hidden"
@@ -1325,15 +1325,15 @@ export default function Home() {
               © {currentYear} Dev Desire. All rights reserved.
             </p>
             <div className="flex items-center text-gray-300  text-sm">
-              <span>Built with</span>
+              <span>Built by</span>
               <motion.div
                 animate={{ scale: [1, 1.2, 1] }}
                 transition={{ duration: 1.5, repeat: Infinity }}
-                className="mx-2"
+                className="mx-1"
               >
-                <Heart className="w-4 h-4 text-red-500 fill-current" />
+                {/* <Heart className="w-4 h-4 text-red-500 fill-current" /> */}
               </motion.div>
-              <span className='text-gray-300 '>using React & Framer Motion</span>
+              <span className='text-gray-300 '> Desire using React & Framer Motion</span>
             </div>
           </motion.div>
         </div>
