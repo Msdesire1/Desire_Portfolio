@@ -95,3 +95,7 @@ Integrated APIs to enhance application functionality and streamline data managem
 Assisted in testing web applications across various browsers for compatibility issues.
 Created custom responsive designs that optimized the website layout for various devices.
 Debugged existing code to identify and fix bugs or performance issues.
+
+
+npm install @formspree/react
+npm install react-toastify

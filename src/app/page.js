@@ -1,7 +1,8 @@
-
 "use client"
 import { motion } from 'framer-motion';
 import { useState, useEffect } from 'react';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import { ChevronDown, Github, Linkedin, Mail, Code, Palette, Zap, Users, ExternalLink, Calendar, MapPin, Building, GraduationCap, Award, Phone, Send, Heart } from 'lucide-react';
 
 export default function Home() {
@@ -15,15 +16,124 @@ export default function Home() {
   const [educationInView, setEducationInView] = useState(false);
   const [contactInView, setContactInView] = useState(false);
   const [isDownloading, setIsDownloading] = useState(false);
-
-  // Contact form state
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     subject: '',
     message: ''
   });
-  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  // const handleChange = (e) => {
+  //   setFormData({
+  //     ...formData,
+  //     [e.target.name]: e.target.value
+  //   });
+  // };
+
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault();
+  //   setIsSubmitting(true);
+  //   try {
+  //     // Submit to Formspree
+  //     const response = await fetch('https://formspree.io/f/xdkllzzo', {
+  //       method: 'POST',
+  //       headers: {
+  //         'Content-Type': 'application/json'
+  //       },
+  //       body: JSON.stringify(formData)
+  //     });
+
+  //     if (response.ok) {
+  //       // Reset form on success
+  //       setFormData({
+  //         name: '',
+  //         email: '',
+  //         subject: '',
+  //         message: ''
+  //       });
+  //       toast.success('Message sent successfully! 🎉', {
+  //         position: "top-right",
+  //         autoClose: 5000,
+  //         hideProgressBar: false,
+  //         closeOnClick: true,
+  //         pauseOnHover: true,
+  //         draggable: true,
+  //         progress: undefined,
+  //         theme: "dark",
+  //       });
+  //     } else {
+  //       throw new Error('Failed to send message');
+  //     }
+  //   } catch (error) {
+  //     toast.error('There was an error sending your message. Please try again.', {
+  //       position: "top-right",
+  //       autoClose: 5000,
+  //       hideProgressBar: false,
+  //       closeOnClick: true,
+  //       pauseOnHover: true,
+  //       draggable: true,
+  //       progress: undefined,
+  //       theme: "dark",
+  //     });
+  //   } finally {
+  //     setIsSubmitting(false);
+  //   }
+
+
+  //mmmmmmm
+  const handleChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value
+    });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    // Submit to Formspree
+    const response = await fetch('https://formspree.io/f/xdkllzzo', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(formData)
+    });
+
+    if (response.ok) {
+      // Reset form on success
+      setFormData({
+        name: '',
+        email: '',
+        subject: '',
+        message: ''
+      });
+       toast.success('Message sent successfully! 🎉', {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "dark",
+        });
+    } else {
+      toast.error('There was an error sending your message. Please try again.', {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+      });
+    }
+
+    setIsSubmitting(false);
+  };
 
   const navItems = [
     { id: 'hero', label: 'Home' },
@@ -114,27 +224,6 @@ export default function Home() {
     }
   };
 
-  // Contact form handlers
-  const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
-    });
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-
-    // Simulate form submission
-    await new Promise(resolve => setTimeout(resolve, 2000));
-
-    // Show success message
-    alert("Message sent! Thank you for your message. I'll get back to you soon.");
-
-    setFormData({ name: '', email: '', subject: '', message: '' });
-    setIsSubmitting(false);
-  };
 
   // Data for components
   const containerVariants = {
@@ -366,9 +455,23 @@ export default function Home() {
   };
   const currentYear = new Date().getFullYear();
 
+
   return (
     <div className="min-h-screen bg-[#111317]">
       {/* Navigation */}
+
+ <ToastContainer
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="dark"
+      />
       <motion.nav
         initial={{ y: -100 }}
         animate={{ y: 0 }}
@@ -1116,8 +1219,7 @@ export default function Home() {
                   </p>
                 </motion.div>
               </motion.div>
-
-              <motion.div
+              {/* <motion.div
                 initial={{ opacity: 0, x: 50 }}
                 animate={contactInView ? { opacity: 1, x: 0 } : {}}
                 transition={{ duration: 0.8, delay: 0.4 }}
@@ -1227,7 +1329,118 @@ export default function Home() {
                     )}
                   </motion.button>
                 </form>
-              </motion.div>
+              </motion.div> */}
+                <motion.div
+      initial={{ opacity: 0, x: 50 }}
+      animate={contactInView ? { opacity: 1, x: 0 } : {}}
+      transition={{ duration: 0.8, delay: 0.4 }}
+    >
+      <form onSubmit={handleSubmit} className="bg-[#16181D] p-8 rounded-2xl shadow-lg">
+        <div className="grid sm:grid-cols-2 gap-6 mb-6">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={contactInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.6, delay: 0.5 }}
+          >
+            <label htmlFor="name" className="block text-sm font-medium mb-2 text-gray-300">
+              Full Name
+            </label>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              value={formData.name}
+              onChange={handleChange}
+              required
+              className="w-full px-4 py-3 bg-[#21242C] text-gray-300 border border-[#21242C] rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-300"
+              placeholder="Your full name"
+            />
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={contactInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.6, delay: 0.6 }}
+          >
+            <label htmlFor="email" className="block text-sm font-medium mb-2 text-gray-300">
+              Email Address
+            </label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              value={formData.email}
+              onChange={handleChange}
+              required
+              className="w-full px-4 py-3 bg-[#21242C] text-gray-300 border border-[#21242C] rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-300"
+              placeholder="your@email.com"
+            />
+          </motion.div>
+        </div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={contactInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6, delay: 0.7 }}
+          className="mb-6"
+        >
+          <label htmlFor="subject" className="block text-sm font-medium mb-2 text-gray-300">
+            Subject
+          </label>
+          <input
+            type="text"
+            id="subject"
+            name="subject"
+            value={formData.subject}
+            onChange={handleChange}
+            required
+            className="w-full px-4 py-3 bg-[#21242C] text-gray-300 border border-[#21242C] rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-300"
+            placeholder="What's this about?"
+          />
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={contactInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6, delay: 0.8 }}
+          className="mb-6"
+        >
+          <label htmlFor="message" className="block text-sm font-medium mb-2 text-gray-300">
+            Message
+          </label>
+          <textarea
+            id="message"
+            name="message"
+            value={formData.message}
+            onChange={handleChange}
+            required
+            rows={5}
+            className="w-full px-4 py-3 bg-[#21242C]  text-gray-300 border border-[#21242C] rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-300 resize-none"
+            placeholder="Tell me about your project..."
+          />
+        </motion.div>
+
+        <motion.button
+          type="submit"
+          disabled={isSubmitting}
+          whileHover={{ scale: 1.02 }}
+          whileTap={{ scale: 0.98 }}
+          initial={{ opacity: 0, y: 20 }}
+          animate={contactInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6, delay: 0.9 }}
+          className="w-full bg-[#3C83F6] text-black py-4 rounded-lg font-semibold flex items-center justify-center space-x-2 hover:bg-primary-hover disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-300"
+        >
+          {isSubmitting ? (
+            <div className="w-5 h-5 border-2 border-primary-foreground/30 border-t-primary-foreground rounded-full animate-spin" />
+          ) : (
+            <>
+              <Send className="w-5 h-5" />
+              <span>Send Message</span>
+            </>
+          )}
+        </motion.button>
+      </form>
+    </motion.div>
             </div>
           </div>
         </section>
