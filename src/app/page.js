@@ -446,8 +446,8 @@ export default function Home() {
     const downloadFile = () => {
     setIsDownloading(true);
     const link = document.createElement("a");
-    link.href = "/Olamideeee Resume.pdf";
-    link.download = "Olamideeee Resume.pdf";
+    link.href = "/Resume Desire.pdf";
+    link.download = "Resume Desire.pdf";
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
@@ -457,10 +457,10 @@ export default function Home() {
 
 
   return (
-    <div className="min-h-screen bg-[#111317]">
+<div className='min-h-screen bg-[#111317]'>
+      <div className="">
       {/* Navigation */}
-
- <ToastContainer
+         <ToastContainer
         position="top-right"
         autoClose={5000}
         hideProgressBar={false}
@@ -479,14 +479,14 @@ export default function Home() {
           isScrolled ? 'bg-white/80 backdrop-blur-md shadow-lg' : 'bg-transparent'
         }`}
       >
-        <div className="container mx-auto px-6 py-4">
+       <div className="container mx-auto lg:px-20 px-6 py-4">
           <div className="flex items-center justify-between">
             <motion.div
               whileHover={{ scale: 1.05 }}
               className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-green-500 bg-clip-text text-transparent cursor-pointer"
               onClick={() => scrollToSection('hero')}
             >
-          Dev Desire
+              Dev Desire
               {/* Alex Chen */}
             </motion.div>
 
@@ -548,7 +548,7 @@ export default function Home() {
         <div className="w-full h-full bg-gradient-to-br from-blue-100 to-green-100 opacity-70" />
             </motion.div>
           </div>
-         <div className="relative z-10 container mx-auto px-6 text-center pt-32">
+         <div className="relative z-10 container mx-auto lg:px-20 px-6 text-center pt-32">
             <motion.div
               variants={containerVariants}
               initial="hidden"
@@ -563,7 +563,7 @@ export default function Home() {
 
               <motion.h1
                 variants={itemVariants}
-                className="text-5xl md:text-7xl font-bold mb-6 leading-tight text-gray-300"
+                className="text-5xl md:text-7xl font-bold mb-6 leading-tight text-white"
               >
                 Frontend Developer &{' '}
                 <span className="bg-gradient-to-r from-blue-600 to-green-500 bg-clip-text text-transparent">Creative Problem Solver</span>
@@ -645,7 +645,7 @@ export default function Home() {
         </section>
 
         {/* About Section */}
-        <section id="about" className="py-20 bg-surface">
+        <section id="about" className="py-20 bg-surface lg:px-20 px-6">
           <div className="container mx-auto px-6">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
@@ -750,7 +750,7 @@ export default function Home() {
         {/* Projects Section */}
 
         {/* Projects Section */}
-<section id="projects" className="py-20 bg-[#07090D]">
+<section id="projects" className="py-20 bg-[#07090D] lg:px-20 px-6">
   <div className="container mx-auto px-6">
     <motion.div
       initial={{ opacity: 0, y: 30 }}
@@ -903,7 +903,7 @@ export default function Home() {
   </div>
 </section>
   {/* Experience Section */}
-   <section id="experience" className="py-20 bg-[#111317]">
+   <section id="experience" className="py-20 bg-[#111317] lg:px-20 px-6">
   <div className="container mx-auto px-6">
     <motion.div
       initial={{ opacity: 0, y: 30 }}
@@ -1013,7 +1013,7 @@ export default function Home() {
       transition={{ duration: 0.8, delay: 0.8 }}
       className="text-center mt-16"
     >
-      <div className="bg-[#16181D] p-8 rounded-2xl max-w-2xl mx-auto">
+      <div className="bg-[#16181D] p-8 rounded-2xl max-w-2xl mx-auto ">
         <h3 className="text-2xl font-bold mb-4 text-gray-300">Want to work together?</h3>
         <p className="text-gray-300 mb-6">
           I&apos;m always interested in new opportunities and exciting projects.
@@ -1033,7 +1033,7 @@ export default function Home() {
 </section>
 
       {/* Education Section */}
-<section id="education" className="py-20 bg-[#07090D]">
+<section id="education" className="py-20 bg-[#07090D] lg:px-20 px-6">
   <div className="container mx-auto px-6">
     <motion.div
       initial={{ opacity: 0, y: 30 }}
@@ -1219,117 +1219,6 @@ export default function Home() {
                   </p>
                 </motion.div>
               </motion.div>
-              {/* <motion.div
-                initial={{ opacity: 0, x: 50 }}
-                animate={contactInView ? { opacity: 1, x: 0 } : {}}
-                transition={{ duration: 0.8, delay: 0.4 }}
-              >
-                <form onSubmit={handleSubmit} className="bg-[#16181D] p-8 rounded-2xl shadow-lg">
-                  <div className="grid sm:grid-cols-2 gap-6 mb-6">
-                    <motion.div
-                      initial={{ opacity: 0, y: 20 }}
-                      animate={contactInView ? { opacity: 1, y: 0 } : {}}
-                      transition={{ duration: 0.6, delay: 0.5 }}
-                    >
-                      <label htmlFor="name" className="block text-sm font-medium mb-2 text-gray-300">
-                        Full Name
-                      </label>
-                      <input
-                        type="text"
-                        id="name"
-                        name="name"
-                        value={formData.name}
-                        onChange={handleChange}
-                        required
-                        className="w-full px-4 py-3 bg-[#21242C] text-gray-300 border border-[#21242C] rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-300"
-                        placeholder="Your full name"
-                      />
-                    </motion.div>
-
-                    <motion.div
-                      initial={{ opacity: 0, y: 20 }}
-                      animate={contactInView ? { opacity: 1, y: 0 } : {}}
-                      transition={{ duration: 0.6, delay: 0.6 }}
-                    >
-                      <label htmlFor="email" className="block text-sm font-medium mb-2 text-gray-300">
-                        Email Address
-                      </label>
-                      <input
-                        type="email"
-                        id="email"
-                        name="email"
-                        value={formData.email}
-                        onChange={handleChange}
-                        required
-                        className="w-full px-4 py-3 bg-[#21242C] text-gray-300 border border-[#21242C] rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-300"
-                        placeholder="your@email.com"
-                      />
-                    </motion.div>
-                  </div>
-
-                  <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={contactInView ? { opacity: 1, y: 0 } : {}}
-                    transition={{ duration: 0.6, delay: 0.7 }}
-                    className="mb-6"
-                  >
-                    <label htmlFor="subject" className="block text-sm font-medium mb-2 text-gray-300">
-                      Subject
-                    </label>
-                    <input
-                      type="text"
-                      id="subject"
-                      name="subject"
-                      value={formData.subject}
-                      onChange={handleChange}
-                      required
-                      className="w-full px-4 py-3 bg-[#21242C] text-gray-300 border border-[#21242C] rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-300"
-                      placeholder="What's this about?"
-                    />
-                  </motion.div>
-
-                  <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={contactInView ? { opacity: 1, y: 0 } : {}}
-                    transition={{ duration: 0.6, delay: 0.8 }}
-                    className="mb-6"
-                  >
-                    <label htmlFor="message" className="block text-sm font-medium mb-2 text-gray-300">
-                      Message
-                    </label>
-                    <textarea
-                      id="message"
-                      name="message"
-                      value={formData.message}
-                      onChange={handleChange}
-                      required
-                      rows={5}
-                      className="w-full px-4 py-3 bg-[#21242C]  text-gray-300 border border-[#21242C] rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-300 resize-none"
-                      placeholder="Tell me about your project..."
-                    />
-                  </motion.div>
-
-                  <motion.button
-                    type="submit"
-                    disabled={isSubmitting}
-                    whileHover={{ scale: 1.02 }}
-                    whileTap={{ scale: 0.98 }}
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={contactInView ? { opacity: 1, y: 0 } : {}}
-                    transition={{ duration: 0.6, delay: 0.9 }}
-                    className="w-full bg-[#3C83F6] text-black py-4 rounded-lg font-semibold flex items-center justify-center space-x-2 hover:bg-primary-hover disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-300"
-                  >
-                    {isSubmitting ? (
-                      <div className="w-5 h-5 border-2 border-primary-foreground/30 border-t-primary-foreground rounded-full animate-spin" />
-                    ) : (
-                      <>
-                        <Send className="w-5 h-5" />
-                        <span>Send Message</span>
-                      </>
-                    )}
-                  </motion.button>
-                </form>
-              </motion.div> */}
                 <motion.div
       initial={{ opacity: 0, x: 50 }}
       animate={contactInView ? { opacity: 1, x: 0 } : {}}
@@ -1447,7 +1336,7 @@ export default function Home() {
       </main>
 
       {/* Footer */}
-      <footer className=" bg-[#111317] border-t border-border">
+      <footer className=" bg-[#111317] border-t border-border lg:px-20 px-6">
         <div className="container mx-auto px-6 py-12">
           <div className="grid md:grid-cols-3 gap-8 mb-8">
             <motion.div
@@ -1552,5 +1441,6 @@ export default function Home() {
         </div>
       </footer>
     </div>
+</div>
   );
 };
