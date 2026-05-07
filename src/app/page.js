@@ -165,8 +165,6 @@ export default function Home() {
     }
   };
 
-
-  // Data for components
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
