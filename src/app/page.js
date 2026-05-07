@@ -298,7 +298,6 @@ export default function Home() {
   ];
 
   const projects = [
-
     {
       title: 'Tulu Identity',
       description: 'From diplomas to transcripts, Tulu Identity backed by Hedera,  issue and verify genuine academic credentials instantly. Eliminate fraud, reduce administrative overhead.',
@@ -547,7 +546,6 @@ export default function Home() {
       </motion.nav>
 
       <main className='bg-gradient-hero'>
-        {/* Hero Section */}
         <section id="hero" className="relative min-h-screen flex items-center justify-center">
           <div className="absolute  inset-0 overflow-hidden">
             <motion.div
