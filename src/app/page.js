@@ -109,7 +109,6 @@ export default function Home() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Intersection observers for animations
   useEffect(() => {
     const observerOptions = { threshold: 0.3 };
 
