@@ -498,7 +498,7 @@ export default function Home() {
                <div
         className="w-full h-[100%]  bg-cover bg-center bg-no-repeat"
         style={{
-          backgroundImage: "url('/kemi.jpeg')",
+          backgroundImage: "url('/kemi.png')",
           filter: ""
         }}
       />
@@ -742,7 +742,7 @@ export default function Home() {
                 src={project.image}
                 alt={project.title}
                   width={800}
-                  height={500}
+                  height={800}
                 className="w-full h-64 lg:h-80 object-cover transition-transform duration-700 group-hover:scale-110"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-gray-900/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
