@@ -703,9 +703,6 @@ export default function Home() {
             </div>
           </div>
         </section>
-
-        {/* Projects Section */}
-
         {/* Projects Section */}
 <section id="projects" className="py-20 bg-[#07090D] lg:px-20 px-6">
   <div className="container mx-auto px-6">
@@ -1401,3 +1398,7 @@ export default function Home() {
 </div>
   );
 };
+
+
+
+
