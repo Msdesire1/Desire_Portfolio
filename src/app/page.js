@@ -298,6 +298,16 @@ export default function Home() {
   ];
 
   const projects = [
+
+    {
+      title: 'Tulu Identity',
+      description: 'From diplomas to transcripts, Tulu Identity backed by Hedera,  issue and verify genuine academic credentials instantly. Eliminate fraud, reduce administrative overhead.',
+      image: '/id.png',
+      technologies: ['React', 'Framer Motion', 'Chart.js','Socket.io','TypeScript', 'Tailwind CSS'],
+      github: 'https://github.com/Msdesire1',
+      demo: 'https://identity.tulupay.com',
+      featured: true,
+    },
     {
       title: 'E-commerce Platform',
       description: 'A modern e-commerce platform built with React and TypeScript, featuring real-time inventory management, secure payments, and responsive design. Implemented advanced filtering, search functionality, and optimized performance.',
@@ -332,6 +342,16 @@ export default function Home() {
       technologies: ['React', 'Next.js','Tailwind CSS' ],
       github: 'https://github.com/Msdesire1',
       demo: 'https://docs.tulupay.com',
+      featured: true,
+    },
+
+     {
+      title: 'Maistrade Cooperative',
+      description: 'Maistrade Cooperative is a platform that provides financial services to micro, small and medium enterprises. It offers a range of services including savings, loans, and insurance products tailored to the needs of small businesses. The platform aims to empower entrepreneurs by providing them with access to affordable financial solutions, helping them grow their businesses and contribute to economic development.',
+      image: '/ms.png',
+      technologies: ['React', 'Next.js','Tailwind CSS' ],
+      github: 'https://github.com/Msdesire1',
+      demo: 'https://maistradecooperative.com',
       featured: true,
     },
   ];
@@ -377,8 +397,6 @@ export default function Home() {
       period: '2022 - 2024',
       description: 'Specialized in software engineering, data structures, algorithms, and web technologies. Active member of the coding club and participated in various hackathons.',
       achievements: [
-        // 'Dean\'s List for academic excellence (3 consecutive semesters)',
-        // 'Winner of Inter-college Web Development Competition 2021',
         'Published research paper on "Modern Frontend Frameworks Performance Analysis"',
         'Led team of 5 students in final year website project',
       ],
@@ -475,7 +493,7 @@ export default function Home() {
       <motion.nav
         initial={{ y: -100 }}
         animate={{ y: 0 }}
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-amber-400 ${
           isScrolled ? 'bg-white/80 backdrop-blur-md shadow-lg' : 'bg-transparent'
         }`}
       >
@@ -490,7 +508,7 @@ export default function Home() {
               {/* Alex Chen */}
             </motion.div>
 
-            <div className="hidden md:flex space-x-8">
+            <div className="hidden md:flex space-x-8 bg">
               {navItems.map((item, index) => (
                 <motion.button
                   key={item.id}
@@ -531,7 +549,7 @@ export default function Home() {
       <main className='bg-gradient-hero'>
         {/* Hero Section */}
         <section id="hero" className="relative min-h-screen flex items-center justify-center">
-          <div className="absolute inset-0 overflow-hidden">
+          <div className="absolute  inset-0 overflow-hidden">
             <motion.div
               initial={{ scale: 1.1 }}
               animate={{ scale: 1 }}
@@ -539,10 +557,10 @@ export default function Home() {
               className="w-full h-full"
             >
                <div
-        className="w-full h-full bg-cover bg-center bg-no-repeat"
+        className="w-full h-[100%]  bg-cover bg-center bg-no-repeat"
         style={{
-          backgroundImage: "url('code.jpg')",
-          filter: "blur(4px)"
+          backgroundImage: "url('kemi.jpeg')",
+          filter: ""
         }}
       />
         <div className="w-full h-full bg-gradient-to-br from-blue-100 to-green-100 opacity-70" />
