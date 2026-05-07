@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { ChevronDown, Github, Linkedin, Mail, Code, Palette, Zap, Users, ExternalLink, Calendar, MapPin, Building, GraduationCap, Award, Phone, Send, Heart } from 'lucide-react';
+import Image from 'next/image';
 
 export default function Home() {
   // Navigation state
@@ -737,9 +738,11 @@ export default function Home() {
               className="relative group overflow-hidden rounded-2xl shadow-2xl"
             >
               {/* Fixed image display */}
-              <img
+              <Image
                 src={project.image}
                 alt={project.title}
+                  width={800}
+                  height={500}
                 className="w-full h-64 lg:h-80 object-cover transition-transform duration-700 group-hover:scale-110"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-gray-900/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
