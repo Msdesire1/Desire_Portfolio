@@ -284,15 +284,15 @@ export default function Home() {
       featured: true,
     },
 
-    //  {
-    //   title: 'Maistrade Cooperative',
-    //   description: 'Maistrade Cooperative is a platform that provides financial services to micro, small and medium enterprises. It offers a range of services including savings, loans, and insurance products tailored to the needs of small businesses. The platform aims to empower entrepreneurs by providing them with access to affordable financial solutions, helping them grow their businesses and contribute to economic development.',
-    //   image: '/ms.png',
-    //   technologies: ['React', 'Next.js','Tailwind CSS' ],
-    //   github: 'https://github.com/Msdesire1',
-    //   demo: 'https://maistradecooperative.com',
-    //   featured: true,
-    // },
+     {
+      title: 'Maistrade Cooperative',
+      description: 'Maistrade Cooperative is a platform that provides financial services to micro, small and medium enterprises. It offers a range of services including savings, loans, and insurance products tailored to the needs of small businesses. The platform aims to empower entrepreneurs by providing them with access to affordable financial solutions, helping them grow their businesses and contribute to economic development.',
+      image: '/ms.png',
+      technologies: ['React', 'Next.js','Tailwind CSS' ],
+      github: 'https://github.com/Msdesire1',
+      demo: 'https://maistradecooperative.com',
+      featured: true,
+    },
   ];
 
   const experiences = [
