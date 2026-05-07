@@ -24,64 +24,6 @@ export default function Home() {
     message: ''
   });
 
-  // const handleChange = (e) => {
-  //   setFormData({
-  //     ...formData,
-  //     [e.target.name]: e.target.value
-  //   });
-  // };
-
-  // const handleSubmit = async (e) => {
-  //   e.preventDefault();
-  //   setIsSubmitting(true);
-  //   try {
-  //     // Submit to Formspree
-  //     const response = await fetch('https://formspree.io/f/xdkllzzo', {
-  //       method: 'POST',
-  //       headers: {
-  //         'Content-Type': 'application/json'
-  //       },
-  //       body: JSON.stringify(formData)
-  //     });
-
-  //     if (response.ok) {
-  //       // Reset form on success
-  //       setFormData({
-  //         name: '',
-  //         email: '',
-  //         subject: '',
-  //         message: ''
-  //       });
-  //       toast.success('Message sent successfully! 🎉', {
-  //         position: "top-right",
-  //         autoClose: 5000,
-  //         hideProgressBar: false,
-  //         closeOnClick: true,
-  //         pauseOnHover: true,
-  //         draggable: true,
-  //         progress: undefined,
-  //         theme: "dark",
-  //       });
-  //     } else {
-  //       throw new Error('Failed to send message');
-  //     }
-  //   } catch (error) {
-  //     toast.error('There was an error sending your message. Please try again.', {
-  //       position: "top-right",
-  //       autoClose: 5000,
-  //       hideProgressBar: false,
-  //       closeOnClick: true,
-  //       pauseOnHover: true,
-  //       draggable: true,
-  //       progress: undefined,
-  //       theme: "dark",
-  //     });
-  //   } finally {
-  //     setIsSubmitting(false);
-  //   }
-
-
-  //mmmmmmm
   const handleChange = (e) => {
     setFormData({
       ...formData,
