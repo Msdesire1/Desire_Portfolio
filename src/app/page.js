@@ -6,13 +6,21 @@ import 'react-toastify/dist/ReactToastify.css';
 import { ChevronDown, Github, Linkedin, Mail, Code, Palette, Zap, Users, ExternalLink, Calendar, MapPin, Building, GraduationCap, Award, Phone, Send, Heart } from 'lucide-react';
 import Image from 'next/image';
 
+const navItems = [
+  { id: 'hero', label: 'Home' },
+  { id: 'about', label: 'About' },
+  { id: 'projects', label: 'Projects' },
+  { id: 'experience', label: 'Experience' },
+  { id: 'education', label: 'Education' },
+  { id: 'contact', label: 'Contact' },
+];
+
 export default function Home() {
   // Navigation state
   const [activeSection, setActiveSection] = useState('hero');
   const [isScrolled, setIsScrolled] = useState(false);
   // Section visibility states
   const [aboutInView, setAboutInView] = useState(false);
-  const [projectsInView, setProjectsInView] = useState(false);
   const [experienceInView, setExperienceInView] = useState(false);
   const [educationInView, setEducationInView] = useState(false);
   const [contactInView, setContactInView] = useState(false);
@@ -78,25 +86,18 @@ export default function Home() {
     setIsSubmitting(false);
   };
 
-  const navItems = [
-    { id: 'hero', label: 'Home' },
-    { id: 'about', label: 'About' },
-    { id: 'projects', label: 'Projects' },
-    { id: 'experience', label: 'Experience' },
-    { id: 'education', label: 'Education' },
-    { id: 'contact', label: 'Contact' },
-  ];
-
   // Navigation scroll handling
   useEffect(() => {
+    const sectionIds = navItems.map(item => item.id);
+
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
 
-      const sections = navItems.map(item => document.getElementById(item.id));
+      const sections = sectionIds.map(id => document.getElementById(id));
       const currentSection = sections.find(section => {
         if (section) {
           const rect = section.getBoundingClientRect();
-          return rect.top <= 100 && rect.bottom >= 100;
+          return rect.top <= 120 && rect.bottom >= 120;
         }
         return false;
       });
@@ -118,11 +119,6 @@ export default function Home() {
       observerOptions
     );
 
-    const projectsObserver = new IntersectionObserver(
-      ([entry]) => entry.isIntersecting && setProjectsInView(true),
-      { threshold: 0.2 }
-    );
-
     const experienceObserver = new IntersectionObserver(
       ([entry]) => entry.isIntersecting && setExperienceInView(true),
       observerOptions
@@ -139,20 +135,17 @@ export default function Home() {
     );
 
     const aboutEl = document.getElementById('about');
-    const projectsEl = document.getElementById('projects');
     const experienceEl = document.getElementById('experience');
     const educationEl = document.getElementById('education');
     const contactEl = document.getElementById('contact');
 
     if (aboutEl) aboutObserver.observe(aboutEl);
-    if (projectsEl) projectsObserver.observe(projectsEl);
     if (experienceEl) experienceObserver.observe(experienceEl);
     if (educationEl) educationObserver.observe(educationEl);
     if (contactEl) contactObserver.observe(contactEl);
 
     return () => {
       aboutObserver.disconnect();
-      projectsObserver.disconnect();
       experienceObserver.disconnect();
       educationObserver.disconnect();
       contactObserver.disconnect();
@@ -160,9 +153,10 @@ export default function Home() {
   }, []);
 
   const scrollToSection = (sectionId) => {
-    const element = document.getElementById(sectionId);
+    const normalizedId = sectionId?.replace(/^#/, '');
+    const element = document.getElementById(normalizedId);
     if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
   };
 
@@ -358,7 +352,6 @@ export default function Home() {
         'Value of any assets',
         ' Technical Drawing',
         'Building Construction',
-        // 'Head of Computer Club',
       ],
       courses: [
         'Property Valuation',
@@ -402,9 +395,11 @@ export default function Home() {
 
     const downloadFile = () => {
     setIsDownloading(true);
-    const link = document.createElement("a");
-    link.href = "/Resume Desire.pdf";
-    link.download = "Resume Desire.pdf";
+    const filePath = '/Resume Desire.pdf';
+    const link = document.createElement('a');
+    link.href = encodeURI(filePath);
+    link.download = 'Resume Desire.pdf';
+    link.style.display = 'none';
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
@@ -433,14 +428,14 @@ export default function Home() {
         initial={{ y: -100 }}
         animate={{ y: 0 }}
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-amber-400 ${
-          isScrolled ? 'bg-white/80 backdrop-blur-md shadow-lg' : 'bg-transparent'
+          isScrolled ? 'bg-black backdrop-blur-md shadow-lg' : 'bg-transparent'
         }`}
       >
        <div className="container mx-auto lg:px-20 px-6 py-4">
-          <div className="flex items-center justify-between">
+          <div className="flex items-center justify-between ">
             <motion.div
               whileHover={{ scale: 1.05 }}
-              className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-green-500 bg-clip-text text-transparent cursor-pointer"
+              className="text-2xl font-bold bg-gradient-to-r from-slate-400 to-purple-300 bg-clip-text text-transparent cursor-pointer"
               onClick={() => scrollToSection('hero')}
             >
               Dev Desire
@@ -459,15 +454,15 @@ export default function Home() {
 
                   className={`relative px-3 py-2 text-[16px] font-medium transition-colors ${
                     activeSection === item.id
-                      ? 'text-blue-600'
-                      : 'text-gray-900 hover:text-gray-600'
+                      ? 'text-slate-200'
+                      : 'text-slate-200 hover:text-gray-600'
                   }`}
                 >
                   {item.label}
                   {activeSection === item.id && (
                     <motion.div
                       layoutId="activeSection"
-                      className="absolute bottom-0 left-0 right-0 h-0.5 bg-blue-600 rounded-full"
+                      className="absolute bottom-0 left-0 right-0 h-0.5 bg-slate-700 rounded-full"
                     />
                   )}
                 </motion.button>
@@ -478,7 +473,7 @@ export default function Home() {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               onClick={() => scrollToSection('contact')}
-              className="bg-[#3C83F6] text-black px-6 py-2 rounded-lg font-medium hover:bg-blue-300 transition-colors"
+              className="bg-[#43486e] text-white px-6 py-2 rounded-lg font-medium hover:bg-slate-800 transition-colors"
             >
               Get In Touch
             </motion.button>
@@ -486,118 +481,128 @@ export default function Home() {
         </div>
       </motion.nav>
 
-      <main className='bg-gradient-hero'>
-        <section id="hero" className="relative min-h-screen flex items-center justify-center">
-          <div className="absolute  inset-0 overflow-hidden">
-            <motion.div
-              initial={{ scale: 1.1 }}
-              animate={{ scale: 1 }}
-              transition={{ duration: 1.5, ease: "easeOut" }}
-              className="w-full h-full"
-            >
-               <div
-        className="w-full h-[100%]  bg-cover bg-center bg-no-repeat"
-        style={{
-          backgroundImage: "url('/kemi.png')",
-          filter: ""
-        }}
-      />
-        <div className="w-full h-full bg-gradient-to-br from-blue-100 to-green-100 opacity-70" />
-            </motion.div>
-          </div>
-         <div className="relative z-10 container mx-auto lg:px-20 px-6 text-center pt-32">
-            <motion.div
-              variants={containerVariants}
-              initial="hidden"
-              animate="visible"
-              className="max-w-4xl mx-auto"
-            >
-              <motion.div variants={itemVariants} className="mb-6">
-                <span className="inline-block px-4 py-2 bg-[#172334] border border-blue-400 rounded-full text-blue-700 text-sm font-medium">
+      <main className='bg-[#0b1220] py-14'>
+        <section id="hero" className="relative min-h-screen py-20">
+          <div className="container mx-auto lg:px-20 px-6">
+            <div className="grid gap-16 lg:grid-cols-2 items-center">
+              <motion.div
+                initial={{ opacity: 0, x: -30 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true, amount: 0.3 }}
+                transition={{ duration: 0.8 }}
+                className="relative"
+              >
+                <div className="relative overflow-hidden rounded-[32px] ">
+                  <div className="absolute inset-0" />
+                  <div className="relative overflow-hidden">
+                    <Image
+                      src="/kemi.jpeg"
+                      alt="Profile photo"
+                      width={300}
+                      height={800}
+                      className=" w-full h-full object-cover"
+                    />
+                  </div>
+                </div>
+
+    <div className="mt-8 grid gap-4 sm:grid-cols-3">
+                  <div className="rounded-3xl border border-white/10 bg-[#111827] p-5 text-center shadow-xl">
+                    <p className="text-sm uppercase tracking-[0.3em] text-slate-400">Experience</p>
+                    <p className="mt-3 text-3xl font-semibold text-white">3+</p>
+                    <p className="mt-2 text-sm text-gray-400">Years experience</p>
+                  </div>
+                  <div className="rounded-3xl border border-white/10 bg-[#111827] p-5 text-center shadow-xl">
+                    <p className="text-sm uppercase tracking-[0.3em] text-slate-400">Projects</p>
+                    <p className="mt-3 text-3xl font-semibold text-white">10+</p>
+                    <p className="mt-2 text-sm text-gray-400">Delivered</p>
+                  </div>
+                  <div className="rounded-3xl border border-white/10 bg-[#111827] p-5 text-center shadow-xl">
+                    <p className="text-sm uppercase tracking-[0.3em] text-slate-400">Availability</p>
+                    <p className="mt-3 text-3xl font-semibold text-white">Open</p>
+                    <p className="mt-2 text-sm text-gray-400">For new roles</p>
+                  </div>
+                </div>
+
+              </motion.div>
+
+              <motion.div
+                initial={{ opacity: 0, x: 30 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true, amount: 0.3 }}
+                transition={{ duration: 0.8 }}
+                className="text-left"
+              >
+                <span className="inline-flex items-center rounded-full border border-slate-600/40 bg-[#111827] px-4 py-2 text-sm font-medium text-slate-300 mb-6">
                   Available for new opportunities
                 </span>
-              </motion.div>
 
-              <motion.h1
-                variants={itemVariants}
-                className="text-5xl md:text-7xl font-bold mb-6 leading-tight text-white"
-              >
-                Frontend Developer &{' '}
-                <span className="bg-gradient-to-r from-blue-600 to-green-500 bg-clip-text text-transparent">Creative Problem Solver</span>
-              </motion.h1>
+               <h1 className="text-2xl md:text-4xl font-bold leading-tight tracking-tight text-white mb-6">
+  Frontend Engineer &{' '}
+  <span className="bg-gradient-to-r from-slate-500 to-purple-300 bg-clip-text text-transparent">
+     Passionate Problem Solver
+  </span>
+</h1>
 
-              <motion.p
-                variants={itemVariants}
-                className="text-xl md:text-2xl text-gray-300 mb-12 max-w-3xl mx-auto leading-relaxed"
-              >
-                I craft exceptional digital experiences with modern web technologies,
-                transforming complex ideas into beautiful, intuitive interfaces that users love.
-              </motion.p>
+                <p className="max-w-1xl text-lg leading-relaxed text-gray-300 mb-10">
+                  I craft exceptional digital experiences with modern web technologies. I build elegant,
+                  responsive interfaces and polished UI systems that help businesses grow and users enjoy every interaction.
+                </p>
 
-              <motion.div
-                variants={itemVariants}
-                className="flex flex-col sm:flex-row items-center justify-center gap-6 mb-16"
-              >
-                <motion.button
-                  whileHover={{ scale: 1.05, boxShadow: '0 10px 30px rgba(59, 130, 246, 0.3)' }}
-                  whileTap={{ scale: 0.95 }}
-                  onClick={() => scrollToSection('projects')}
-                  className="bg-[#3C83F6] text-black px-8 py-4 rounded-xl font-semibold text-lg shadow-lg hover:bg-blue-700 transition-all duration-300"
-                >
-                  View My Work
-                </motion.button>
-
-                      <motion.button
-                            whileHover={{ scale: 1.05, boxShadow: "0 10px 30px rgba(34, 197, 94, 0.3)" }}
-                        whileTap={{ scale: 0.95 }}
-                          onClick={downloadFile}
-                         disabled={isDownloading}
-                            className="bg-[#16A249] text-black px-8 py-4 rounded-xl font-semibold text-lg shadow-lg hover:bg-green-700 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
-    >
-      {isDownloading ? "Downloading..." : "Download CV"}
-    </motion.button>
-                <motion.button
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  onClick={() => scrollToSection('contact')}
-                  className="border-2 border-blue-600 text-[#3C83F6] px-8 py-4 rounded-xl font-semibold text-lg hover:bg-[#3C83F6] hover:text-white transition-all duration-300"
-                >
-                  Get In Touch
-                </motion.button>
-              </motion.div>
-
-              <motion.div
-                variants={itemVariants}
-                className="flex items-center justify-center space-x-6"
-              >
-                {socialLinks.map((link, index) => (
-                  <motion.a
-                    key={link.label}
-                    href={link.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    whileHover={{ scale: 1.2, y: -2 }}
-                    whileTap={{ scale: 0.9 }}
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.8 + index * 0.1 }}
-                    className="p-3 bg-[#07090D] text-white hover:bg-blue-600 hover:text-white rounded-full transition-all duration-300 shadow-lg"
+                <div className="flex flex-col gap-4 sm:flex-row sm:flex-wrap sm:items-center mb-10">
+                  <motion.button
+                    whileHover={{ scale: 1.03 }}
+                    whileTap={{ scale: 0.97 }}
+                    onClick={() => scrollToSection('projects')}
+                    className="inline-flex items-center justify-center rounded-3xl bg-[#7293da] px-8 py-4 text-sm font-semibold text-white shadow-lg shadow-slate-700/40 transition-all duration-300 hover:bg-slate-800"
                   >
-                    <link.icon size={24} />
-                    <span className="sr-only">{link.label}</span>
-                  </motion.a>
-                ))}
+                    View My Work
+                  </motion.button>
+                  <motion.button
+                    whileHover={{ scale: 1.03 }}
+                    whileTap={{ scale: 0.97 }}
+                    onClick={downloadFile}
+                    disabled={isDownloading}
+                    className="inline-flex items-center justify-center rounded-3xl bg-[#43486e] px-8 py-4 text-sm font-semibold text-white  transition-all duration-300 hover:bg-green-700 disabled:opacity-70 disabled:cursor-not-allowed"
+                  >
+                    {isDownloading ? 'Downloading...' : 'Download CV'}
+                  </motion.button>
+                  <motion.button
+                    whileHover={{ scale: 1.03 }}
+                    whileTap={{ scale: 0.97 }}
+                    onClick={() => scrollToSection('contact')}
+                    className="inline-flex items-center justify-center rounded-3xl border border-slate-600/40 bg-transparent px-8 py-4 text-sm font-semibold text-slate-300 transition-all duration-300 hover:border-slate-500 hover:text-white"
+                  >
+                    Get In Touch
+                  </motion.button>
+                </div>
+
+                <div className="flex flex-wrap items-center gap-4">
+                  {socialLinks.map((link) => (
+                    <motion.a
+                      key={link.label}
+                      href={link.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      whileHover={{ y: -3 }}
+                      className="inline-flex h-14 w-14 items-center justify-center rounded-2xl border border-white/10 bg-[#111827] text-white transition-all duration-300 hover:bg-slate-700 hover:text-white"
+                    >
+                      <link.icon size={22} />
+                      <span className="sr-only">{link.label}</span>
+                    </motion.a>
+                  ))}
+                </div>
               </motion.div>
-            </motion.div>
+            </div>
           </div>
 
           <motion.div
             initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 1.5, repeat: Infinity, repeatType: 'reverse', duration: 2 }}
-            className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.8, delay: 0.5 }}
+            className="mt-16 flex justify-center"
           >
-            <ChevronDown className="w-8 h-8 text-blue-600 animate-bounce" />
+            <ChevronDown className="w-8 h-8 text-slate-500 animate-bounce" />
           </motion.div>
         </section>
 
@@ -610,7 +615,7 @@ export default function Home() {
               transition={{ duration: 0.8 }}
               className="text-center mb-16"
             >
-              <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-blue-600 to-green-500 bg-clip-text text-transparent">
+              <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-slate-600 to-purple-300 bg-clip-text text-transparent">
                 About Me
               </h2>
               <p className="text-xl text-gray-300 max-w-3xl mx-auto">
@@ -652,14 +657,14 @@ export default function Home() {
                     >
                       <div className="flex justify-between items-center mb-2">
                         <h4 className="font-semibold text-gray-300">{skill.category}</h4>
-                        <span className="text-blue-600 font-medium">{skill.percentage}%</span>
+                        <span className="text-slate-600 font-medium">{skill.percentage}%</span>
                       </div>
                       <div className="h-2 bg-gray-200 rounded-full overflow-hidden">
                         <motion.div
                           initial={{ width: 0 }}
                           animate={aboutInView ? { width: `${skill.percentage}%` } : {}}
                           transition={{ duration: 1, delay: 0.5 + index * 0.1, ease: 'easeOut' }}
-                          className="h-full bg-gradient-to-r from-blue-600 to-green-500 rounded-full"
+                          className="h-full bg-gradient-to-r from-slate-600 to-purple-300 rounded-full"
                         />
                       </div>
                       <div className="flex flex-wrap gap-4 mt-2">
@@ -693,7 +698,7 @@ export default function Home() {
                     className="bg-[#16181D] p-6 rounded-xl shadow-lg hover:shadow-[#2474f5] transition-all duration-300"
                   >
                     <div className="w-14 h-14 bg-[#1A2333] rounded-lg flex items-center justify-center mb-4">
-                      <highlight.icon className="w-6 h-6 text-blue-600" />
+                      <highlight.icon className="w-6 h-6 text-slate-700" />
                     </div>
                     <h4 className="font-bold text-[16px] mb-2 text-gray-300">{highlight.title}</h4>
                     <p className="text-gray-300 text-[14px]">{highlight.description}</p>
@@ -708,11 +713,12 @@ export default function Home() {
   <div className="container mx-auto px-6">
     <motion.div
       initial={{ opacity: 0, y: 30 }}
-      animate={projectsInView ? { opacity: 1, y: 0 } : {}}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.2 }}
       transition={{ duration: 0.8 }}
       className="text-center mb-16"
     >
-      <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-blue-600 to-green-500 bg-clip-text text-transparent">
+      <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-slate-600 to-purple-300 bg-clip-text text-transparent">
         Featured Projects
       </h2>
       <p className="text-xl text-gray-300 max-w-3xl mx-auto">
@@ -726,8 +732,9 @@ export default function Home() {
         <motion.div
           key={project.title}
           initial={{ opacity: 0, y: 50 }}
-          animate={projectsInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8, delay: index * 0.2 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.8, delay: index * 0.12 }}
           className={`grid lg:grid-cols-2 gap-12 items-center ${
             index % 2 === 1 ? 'lg:flex-row-reverse' : ''
           }`}
@@ -777,7 +784,8 @@ export default function Home() {
           <div className={index % 2 === 1 ? 'lg:order-1' : ''}>
             <motion.div
               initial={{ opacity: 0, x: index % 2 === 0 ? -30 : 30 }}
-              animate={projectsInView ? { opacity: 1, x: 0 } : {}}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, amount: 0.2 }}
               transition={{ duration: 0.8, delay: index * 0.2 + 0.3 }}
             >
               {project.featured && (
@@ -797,7 +805,7 @@ export default function Home() {
                   <motion.span
                     key={tech}
                     whileHover={{ scale: 1.05 }}
-                    className="px-3 py-1 bg-[#151E2E] text-blue-400 text-sm font-medium rounded-lg border border-[#0C1525]"
+                    className="px-3 py-1 bg-[#151E2E] text-slate-400 text-sm font-medium rounded-lg border border-slate-700"
                   >
                     {tech}
                   </motion.span>
@@ -823,7 +831,7 @@ export default function Home() {
                   rel="noopener noreferrer"
                   whileHover={{ scale: 1.05, y: -2 }}
                   whileTap={{ scale: 0.95 }}
-                  className="inline-flex items-center space-x-2 bg-[#3C83F6] hover:bg-blue-700 text-black px-6 py-3 rounded-lg font-medium transition-colors"
+                  className="inline-flex items-center space-x-2 bg-[#43486e] hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-medium transition-colors"
                 >
                   <ExternalLink size={18} />
                   <span>Live Demo</span>
@@ -837,7 +845,8 @@ export default function Home() {
 
     <motion.div
       initial={{ opacity: 0, y: 30 }}
-      animate={projectsInView ? { opacity: 1, y: 0 } : {}}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.2 }}
       transition={{ duration: 0.8, delay: 0.8 }}
       className="text-center mt-20"
     >
@@ -850,7 +859,7 @@ export default function Home() {
         rel="noopener noreferrer"
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
-        className="inline-flex items-center space-x-2 border-2 border-blue-600 text-blue-600 hover:bg-[#3C83F6] hover:text-black px-8 py-3 rounded-lg font-medium transition-all duration-300"
+        className="inline-flex items-center bg-[#43486e] space-x-2 border-2 border-slate-600 text-slate-100 hover:bg-[#2563EB] hover:text-white px-8 py-3 rounded-lg font-medium transition-all duration-300"
       >
         <Github size={18} />
         <span>View All Projects on GitHub</span>
@@ -867,7 +876,7 @@ export default function Home() {
       transition={{ duration: 0.8 }}
       className="text-center mb-16"
     >
-      <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-blue-600 to-green-500 bg-clip-text text-transparent">
+      <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-slate-600 to-purple-300 bg-clip-text text-transparent">
         Experience
       </h2>
       <p className="text-xl text-gray-300 max-w-3xl mx-auto">
@@ -894,7 +903,7 @@ export default function Home() {
               initial={{ scale: 0 }}
               animate={experienceInView ? { scale: 1 } : {}}
               transition={{ duration: 0.5, delay: index * 0.2 + 0.3 }}
-              className="absolute left-4 md:left-1/2 w-4 h-4 bg-blue-600 rounded-full transform -translate-x-2 md:-translate-x-2 shadow-lg hidden md:block"
+              className="absolute left-4 md:left-1/2 w-4 h-4 bg-slate-600 rounded-full transform -translate-x-2 md:-translate-x-2 shadow-lg hidden md:block"
             />
 
             <motion.div
@@ -979,7 +988,7 @@ export default function Home() {
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
           onClick={() => scrollToSection('contact')}
-          className="bg-gradient-to-r from-blue-600 to-green-500 text-white px-8 py-3 rounded-lg font-medium hover:from-blue-700 hover:to-green-600 transition-colors"
+          className="bg-gradient-to-r from-slate-600 to-purple-300 text-white px-8 py-3 rounded-lg font-medium hover:from-slate-700 hover:to-emerald-600 transition-colors"
         >
           Get In Touch
         </motion.button>
@@ -997,7 +1006,7 @@ export default function Home() {
       transition={{ duration: 0.8 }}
       className="text-center mb-16"
     >
-      <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-blue-600 to-green-500 bg-clip-text text-transparent">
+      <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-slate-600 to-purple-300 bg-clip-text text-transparent">
         Education
       </h2>
       <p className="text-xl text-gray-300 max-w-3xl mx-auto">
@@ -1018,7 +1027,7 @@ export default function Home() {
         >
           <div className="flex flex-wrap items-center gap-3 mb-4">
             <div className="w-12 h-12 bg-[#1A2333] rounded-lg flex items-center justify-center">
-              <GraduationCap className="w-6 h-6 text-blue-600" />
+              <GraduationCap className="w-6 h-6 text-slate-700" />
             </div>
             <div className="flex-1 min-w-[200px]">
               <h3 className="text-2xl font-bold text-gray-300">{edu.degree}</h3>
@@ -1151,7 +1160,7 @@ export default function Home() {
                       whileHover={{ scale: 1.02, x: 10 }}
                       className="flex items-center space-x-4 p-4 bg-[#16181D] rounded-xl hover:shadow-lg transition-all duration-300 group"
                     >
-                      <div className="w-12 h-12 bg-[#1A2333] text-white rounded-lg flex items-center justify-center group-hover:bg-[#3C83F6] group-hover:text-white transition-colors">
+                      <div className="w-12 h-12 bg-[#1A2333] text-white rounded-lg flex items-center justify-center group-hover:bg-[#43486e] group-hover:text-white transition-colors">
                         <info.icon className="w-5 h-5" />
                       </div>
                       <div>
@@ -1273,7 +1282,7 @@ export default function Home() {
           initial={{ opacity: 0, y: 20 }}
           animate={contactInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, delay: 0.9 }}
-          className="w-full bg-[#3C83F6] text-black py-4 rounded-lg font-semibold flex items-center justify-center space-x-2 hover:bg-primary-hover disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-300"
+          className="w-full bg-[#43486e] text-white py-4 rounded-lg font-semibold flex items-center justify-center space-x-2 hover:bg-primary-hover disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-300"
         >
           {isSubmitting ? (
             <div className="w-5 h-5 border-2 border-primary-foreground/30 border-t-primary-foreground rounded-full animate-spin" />
@@ -1302,7 +1311,7 @@ export default function Home() {
               viewport={{ once: true }}
             >
                             {/*               className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-green-500 bg-clip-text text-transparent cursor-pointer"cursor-pointer" */}
-              <h3  className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-green-500 bg-clip-text text-transparent mb-4">
+              <h3  className="text-2xl font-bold bg-gradient-to-r from-slate-600 to-purple-300 bg-clip-text text-transparent mb-4">
                 Dev Desire</h3>
               <p className="text-gray-300 mb-6 leading-relaxed">
                 Frontend Developer passionate about creating exceptional digital experiences.
@@ -1320,7 +1329,7 @@ export default function Home() {
                     transition={{ duration: 0.6, delay: index * 0.1 }}
                     whileHover={{ scale: 1.2, y: -2 }}
                     viewport={{ once: true }}
-                    className="p-2 bg-[#16181D] text-white hover:bg-[#3C83F6] hover:text-primary-foreground rounded-lg transition-all duration-300"
+                    className="p-2 bg-[#16181D] text-white hover:bg-[#43486e] hover:text-primary-foreground rounded-lg transition-all duration-300"
                   >
                     <link.icon size={20} />
                     <span className="sr-only">{link.label}</span>
@@ -1365,7 +1374,7 @@ export default function Home() {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={() => scrollToSection('contact')}
-                className="bg-[#3C83F6] text-black px-6 py-2 rounded-lg font-medium hover:bg-primary-hover transition-colors"
+                className="bg-[#43486e] text-white px-6 py-2 rounded-lg font-medium hover:bg-primary-hover transition-colors"
               >
                 Start a Project
               </motion.button>
