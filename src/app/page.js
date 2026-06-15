@@ -16,8 +16,7 @@ const navItems = [
 ];
 
 export default function Home() {
-  // Navigation state
-  const [activeSection, setActiveSection] = useState('hero');
+   const [activeSection, setActiveSection] = useState('hero');
   const [isScrolled, setIsScrolled] = useState(false);
   // Section visibility states
   const [aboutInView, setAboutInView] = useState(false);
