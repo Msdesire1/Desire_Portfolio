@@ -23,7 +23,6 @@ export default function Home() {
   const [experienceInView, setExperienceInView] = useState(false);
   const [educationInView, setEducationInView] = useState(false);
   const [contactInView, setContactInView] = useState(false);
-  const [isDownloading, setIsDownloading] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [formData, setFormData] = useState({
     name: '',
@@ -391,21 +390,7 @@ export default function Home() {
     { label: 'Contact', href: '#contact' },
   ];
 
-
-    const downloadFile = () => {
-    setIsDownloading(true);
-    const filePath = '/Resume Desire.pdf';
-    const link = document.createElement('a');
-    link.href = encodeURI(filePath);
-    link.download = 'Resume Desire.pdf';
-    link.style.display = 'none';
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-    setIsDownloading(false);
-  };
   const currentYear = new Date().getFullYear();
-
 
   return (
 <div className='min-h-screen bg-[#111317]'>
@@ -556,15 +541,14 @@ export default function Home() {
                   >
                     View My Work
                   </motion.button>
-                  <motion.button
-                    whileHover={{ scale: 1.03 }}
-                    whileTap={{ scale: 0.97 }}
-                    onClick={downloadFile}
-                    disabled={isDownloading}
-                    className="inline-flex items-center justify-center rounded-3xl bg-[#43486e] px-8 py-4 text-sm font-semibold text-white  transition-all duration-300 hover:bg-green-700 disabled:opacity-70 disabled:cursor-not-allowed"
+                  <a
+                    href="/pdf/cv.pdf"
+                    download="cv.pdf"
+                    className="inline-flex items-center justify-center rounded-3xl bg-[#43486e] px-8 py-4 text-sm font-semibold text-white  transition-all duration-300 hover:bg-green-700 cursor-pointer"
+                    style={{ cursor: 'pointer' }}
                   >
-                    {isDownloading ? 'Downloading...' : 'Download CV'}
-                  </motion.button>
+                    Download CV
+                  </a>
                   <motion.button
                     whileHover={{ scale: 1.03 }}
                     whileTap={{ scale: 0.97 }}
@@ -618,7 +602,7 @@ export default function Home() {
                 About Me
               </h2>
               <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-                Passionate frontend developer with 2+ years of experience creating engaging,
+                Passionate frontend developer with 3+ years of experience creating engaging,
                 high-performance web applications that bridge the gap between design and functionality.
               </p>
             </motion.div>
