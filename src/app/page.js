@@ -196,13 +196,18 @@ export default function Home() {
     },
     {
       category: 'Tools & Workflow',
-      items: ['Git', 'Vite', 'Figma'],
+      items: ['Git', 'Vite', 'Figma','Git lab'],
       percentage: 75,
     },
     {
       category: 'Backend & Database',
-      items: ['Node.js', 'MySQL', ],
+      items: ['Node.js', 'MySQL','MangoDB' ],
       percentage: 70,
+    },
+{
+      category: 'AI',
+      items: ['Claude AI', 'Codex AI', 'Deepseek','Kilo Code AI' ],
+      percentage: 50,
     },
   ];
 
@@ -240,40 +245,31 @@ export default function Home() {
       featured: true,
     },
     {
-      title: 'E-commerce Platform',
-      description: 'A modern e-commerce platform built with React and TypeScript, featuring real-time inventory management, secure payments, and responsive design. Implemented advanced filtering, search functionality, and optimized performance.',
-      image: '/smartf.png',
+      title: 'Exam-Elite',
+      description: 'A modern school platform built with React and TypeScript, featuring real-time inventory management, secure exams, and responsive design. Implemented advanced filtering, search functionality, and optimized performance.',
+      image: '/elite.png',
       technologies: ['React', 'TypeScript', 'Tailwind CSS', 'Node.js'],
       github: 'https://github.com/Msdesire1',
-      demo: 'https://smartpaygenie.com',
+      demo: 'https://www.exam-elite.com',
       featured: true,
     },
     {
-      title: 'Coin Dashboard',
-      description: 'Comprehensive project token dashboard with real-time collaboration features, (TLC) isn’t just another token; it’s the heartbeat of the TuluPay ecosystem. From payments to staking, from governance to settlement',
-      image: '/coind.png',
+      title: 'TuluLend Dashboard',
+      description: 'Comprehensive project lend dashboard with real-time collaboration features,  Create lending packages, earn returns, and track everything in one place.TuluPay ecosystem.',
+      image: '/lend.png',
       technologies: ['React', 'Framer Motion', 'Chart.js','Socket.io',' Connect Wallet','TypeScript', 'Tailwind CSS'],
       github: 'https://github.com/Msdesire1',
-      demo: 'https://coin.tulupay.com',
+      demo: 'https://dev.lend.tulupay.com/',
       featured: true,
     },
     {
-      title: 'Compliance App',
-      description: 'Integrate real-time KYB effortlessly using our developer-first API. Automate compliance, reduce fraud, and strengthen trust across all your fintech operations.',
-      image: '/com.png',
+      title: 'Winner church website',
+      description: 'full website build by me for my church. The hour has come to liberate the world from all oppressions of the devil through the preaching of the word of faith, and I am sending you to undertake this task',
+      image: '/churchforme.png',
       technologies: ['React', 'face detetion', 'CSS Grid', 'jotai','Tailwind CSS'],
       github: 'https://github.com/Msdesire1',
-      demo: 'https://compliance.tulupay.com',
+      demo: 'https://www.lfcnewjerusalem.com/',
       featured: false,
-    },
-    {
-      title: 'Tulu Documentation',
-      description: 'API documentationis for developers which  is designed for easy integration',
-      image: '/docss.png',
-      technologies: ['React', 'Next.js','Tailwind CSS' ],
-      github: 'https://github.com/Msdesire1',
-      demo: 'https://docs.tulupay.com',
-      featured: true,
     },
 
      {
@@ -285,6 +281,17 @@ export default function Home() {
       demo: 'https://maistradecooperative.com',
       featured: true,
     },
+    {
+      title: 'Tulu Documentation',
+      description: 'API documentationis for developers which  is designed for easy integration',
+      image: '/docss.png',
+      technologies: ['React', 'Next.js','Tailwind CSS' ],
+      github: 'https://github.com/Msdesire1',
+      demo: 'https://docs.tulupay.com',
+      featured: true,
+    },
+
+
   ];
 
   const experiences = [
@@ -521,7 +528,7 @@ export default function Home() {
                 </span>
 
                <h1 className="text-2xl md:text-4xl font-bold leading-tight tracking-tight text-white mb-6">
-  Frontend Engineer &{' '}
+  Software Engineer &{' '}
   <span className="bg-gradient-to-r from-slate-500 to-purple-300 bg-clip-text text-transparent">
      Passionate Problem Solver
   </span>
