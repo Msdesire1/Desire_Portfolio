@@ -284,7 +284,7 @@ export default function Home() {
  {
       title: 'Stackedtalent.ai',
       description: 'Build YourRecruitment Empire Join 1,200+ companies using AI to discover, engage, and hire top talent faster than ever before',
-      image: '/forcv.png',
+      image: '/cv.png',
       technologies: ['React', 'skill.sh', 'playwright', 'vite','Tailwind CSS'],
       github: 'https://gitlab.ops.stackedtalent.ai/internal/stacked/product/stackedtalent/ats/ats-api/-/tree/fixed/msmegroup-2026-10-14?ref_type=heads',
       demo: 'https://ats-employers.stackedtalent.ai/login',
