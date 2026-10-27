@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import { useState, useEffect } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { ChevronDown, Mail, Code, Palette, Zap, Users, ExternalLink, Calendar, MapPin, Building, GraduationCap, Award, Phone, Send, Heart } from 'lucide-react';
+import { ChevronDown, Mail, Code, Palette, Zap, Users, ExternalLink, Calendar, MapPin, Building, GraduationCap, Award, Phone, Send, Heart, Github, Linkedin } from 'lucide-react';
 import Image from 'next/image';
 
 const navItems = [
@@ -284,7 +284,7 @@ export default function Home() {
  {
       title: 'Stackedtalent.ai',
       description: 'Build YourRecruitment Empire Join 1,200+ companies using AI to discover, engage, and hire top talent faster than ever before',
-      image: '/cv.png',
+      image: '/yourai.png',
       technologies: ['React', 'skill.sh', 'playwright', 'vite','Tailwind CSS'],
       github: 'https://gitlab.ops.stackedtalent.ai/internal/stacked/product/stackedtalent/ats/ats-api/-/tree/fixed/msmegroup-2026-10-14?ref_type=heads',
       demo: 'https://ats-employers.stackedtalent.ai/login',
