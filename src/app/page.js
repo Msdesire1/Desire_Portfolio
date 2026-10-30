@@ -253,6 +253,16 @@ export default function Home() {
       demo: 'https://www.exam-elite.com',
       featured: true,
     },
+
+{
+      title: 'Maistrade Cooperative',
+      description: 'Maistrade Cooperative is a platform that provides financial services to micro, small and medium enterprises. It offers a range of services including savings, loans, and insurance products tailored to the needs of small businesses. The platform aims to empower entrepreneurs by providing them with access to affordable financial solutions, helping them grow their businesses and contribute to economic development.',
+      image: '/ms.png',
+      technologies: ['React', 'Next.js','Tailwind CSS' ],
+      github: 'https://github.com/Msdesire1',
+      demo: 'https://maistradecooperative.com',
+      featured: true,
+    },
     {
       title: 'TuluLend Dashboard',
       description: 'Comprehensive project lend dashboard with real-time collaboration features,  Create lending packages, earn returns, and track everything in one place.TuluPay ecosystem.',
@@ -261,6 +271,16 @@ export default function Home() {
       github: 'https://github.com/dashboard',
       demo: 'https://dev.lend.tulupay.com/',
       featured: true,
+    },
+
+    {
+      title: 'Stackedtalent.ai',
+      description: 'Build YourRecruitment Empire Join 1,200+ companies using AI to discover, engage, and hire top talent faster than ever before',
+      image: '/yourai.png',
+      technologies: ['React', 'skill.sh', 'playwright', 'vite','Tailwind CSS'],
+      github: 'https://gitlab.ops.stackedtalent.ai/internal/stacked/product/stackedtalent/ats/ats-api/-/tree/fixed/msmegroup-2026-10-14?ref_type=heads',
+      demo: 'https://ats-employers.stackedtalent.ai/login',
+      featured: false,
     },
     {
       title: 'Winner church website',
@@ -272,24 +292,8 @@ export default function Home() {
       featured: false,
     },
 
-     {
-      title: 'Maistrade Cooperative',
-      description: 'Maistrade Cooperative is a platform that provides financial services to micro, small and medium enterprises. It offers a range of services including savings, loans, and insurance products tailored to the needs of small businesses. The platform aims to empower entrepreneurs by providing them with access to affordable financial solutions, helping them grow their businesses and contribute to economic development.',
-      image: '/ms.png',
-      technologies: ['React', 'Next.js','Tailwind CSS' ],
-      github: 'https://github.com/Msdesire1',
-      demo: 'https://maistradecooperative.com',
-      featured: true,
-    },
- {
-      title: 'Stackedtalent.ai',
-      description: 'Build YourRecruitment Empire Join 1,200+ companies using AI to discover, engage, and hire top talent faster than ever before',
-      image: '/yourai.png',
-      technologies: ['React', 'skill.sh', 'playwright', 'vite','Tailwind CSS'],
-      github: 'https://gitlab.ops.stackedtalent.ai/internal/stacked/product/stackedtalent/ats/ats-api/-/tree/fixed/msmegroup-2026-10-14?ref_type=heads',
-      demo: 'https://ats-employers.stackedtalent.ai/login',
-      featured: false,
-    },
+
+
 
     {
       title: 'Tulu Borrow',
@@ -538,7 +542,7 @@ export default function Home() {
                 </span>
 
                <h1 className="text-2xl md:text-4xl font-bold leading-tight tracking-tight text-white mb-6">
-  Software Engineer &{' '}
+  Software Developer &{' '}
   <span className="bg-gradient-to-r from-slate-500 to-purple-300 bg-clip-text text-transparent">
      Passionate Problem Solver
   </span>
