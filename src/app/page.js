@@ -205,7 +205,7 @@ export default function Home() {
       percentage: 70,
     },
 {
-      category: 'AI',
+      category: 'AI prompting',
       items: ['Claude AI', 'Codex AI', 'Deepseek','Kilo Code AI' ],
       percentage: 50,
     },
